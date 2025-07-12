@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>Kefra Music</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@600&display=swap" rel="stylesheet" />
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+<style>
+  /* Basic resets and body styling */
+  body {
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('ziridis.jpg'); /* Replace with your background image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  hr {
+    border: none;
+    height: 4px;
+    background-color: #f8f4f4;
+    width: 95%;
+    margin: 30px auto;
+  }
+
+  header {
+    background-color: #222;
+    color: yellowgreen;
+    padding: 20px;
+    text-align: center;
+  }
+
+  header h1 {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  section {
+    padding: 40px 20px;
+  }
+
+  /* Artist Profile */
+  .artist-profile {
+    text-align: center;
+    color: #ccc;
+  }
+
+  .artist-profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+
+  .social-icons {
+    margin-top: 10px;
+    font-size: 1.5em;
+  }
+
+  .social-icons a {
+    margin: 0 10px;
+    color: #555;
+    transition: color 0.3s;
+  }
+
+  .social-icons a:hover {
+    color: #000;
+  }
+
+  /* Gallery styles */
+  #gallery {
+    text-align: center;
+  }
+
+  .gallery-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .gallery-images img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-images img:hover {
+    transform: scale(1.5);
+  }
+
+  .toggle-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* Music Library */
+  .music-library {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .tracks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .track {
+    background: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    width: 280px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .track h3 {
+    margin-top: 0;
+  }
+
+  /* Download button styles */
+  .payment-button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .payment-button:hover {
+    background-color: #142315;
+  }
+
+  /* Contact & Bookings */
+  #contact {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contact-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  /* Bookings info */
+  .bookings-info {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(255,255,255,0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  /* Contact form container */
+  .contact-form-container {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(255,255,255,0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  /* Form styling */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-form label {
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #message {
+    height: 120px;
+  }
+
+  #my-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #my-form button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    transition: background-color 0.3s;
+  }
+
+  #my-form button:hover {
+    background-color: #444;
+  }
+
+  #my-form span {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
+  }
+
+  footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+  }
+
+  /* Additional styles for new sections */
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .news-blog, .upcoming-events {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+  }
+
+  /* Style for the software download section */
+  .software-section {
+    background-color: rgba(255,255,255,0.8);
+    padding: 40px 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 30px auto;
+    text-align: center;
+  }
+
+  .software-section h2 {
+    margin-bottom: 20px;
+  }
+
+  .software-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .software-icon {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  }
+
+  .download-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .download-btn:hover {
+    background-color: #3e8e41;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Kefra Music</h1>
+  <nav>
+    <ul>
+      <li><a href="#music-library">Music</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#upcoming-events">Events</a></li>
+      <li><a href="#news-blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Artist Profile -->
+<section class="artist-profile">
+  <div class="section-container">
+    <h2 class="section-title">Artist Profile</h2>
+    <img src="zion avenue logo0001.png" alt="Kefra Profile Picture" />
+    <h3>Kefra</h3>
+    <p>Multi-genre music artist, producer and writer.</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/kefra" target="_blank" aria-label="Facebook" class="fab fa-facebook-f"></a>
+      <a href="https://www.twitter.com/kefra" target="_blank" aria-label="Twitter" class="fab fa-twitter"></a>
+      <a href="https://www.instagram.com/simon_kefra?igsh=MWk2eGs3aTF5cms0MQ%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram" class="fab fa-instagram"></a>
+      <a href="https://www.youtube.com/channel/UCTZUjLAcr-VsBulu_raVYsw" target="_blank" aria-label="YouTube" class="fab fa-youtube"></a>
+    </div>
+  </div>
+</section>
+<hr />
+
+<!-- Gallery -->
+<section id="gallery">
+  <div class="section-container">
+    <h2 class="section-title">Gallery</h2>
+    <div class="gallery-images">
+      <img src="pick.JPG" alt="Gallery Image 4" />
+      <img src="guitar.JPG" alt="Gallery Image 6" />
+      <img src="lambat.JPG" alt="Gallery Image 2" />
+    </div>
+    <div class="more-images" style="display:none;">
+      <div class="gallery-images">
+        <img src="tune.JPG" alt="Gallery Image 1" />
+        <img src="leads mission.jpg" alt="Gallery Image 3" />
+        <img src="maze.JPG" alt="Gallery Image 5" />
+        <img src="squad2.JPG" alt="Gallery Image 9" />
+        <img src="squad.JPG" alt="Gallery Image 7" />
+        <img src="candles.PNG" alt="Gallery Image 8" />
+      </div>
+    </div>
+    <button class="toggle-button" id="toggle-button">Show More</button>
+  </div>
+</section>
+
+<!-- Music Library -->
+<section id="music-library" class="music-library">
+  <div class="section-container">
+    <h2 class="section-title">Library</h2>
+        <div class="tracks" id="songs-container">
+      <!-- Song 1 -->
+      <div class="track">
+        <h3>Nkomawo</h3>
+        <audio controls>
+          <source src="kefra-Nkomawo.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+        <a class="payment-button" href="kefra-Nkomawo.mp3" download>
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+      <!-- Song 2 -->
+      <div class="track">
+        <h3>Sembera</h3>
+        <audio controls>
+          <source src="Kefra - Sembera.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+        <a class="payment-button" href="Kefra - Sembera.mp3" download>
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+      <!-- Song 3 -->
+      <div class="track">
+        <h3>Twaala</h3>
+        <audio controls>
+          <source src="Kefra - Twaala.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+        <a class="payment-button" href="Kefra - Twaala.mp3" download>
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+      <!-- Hidden 4th to 6th Songs -->
+      <div class="track hidden-song" style="display:none;">
+        <h3>Zukuka</h3>
+        <audio controls>
+          <source src="Kefra - Zukuka.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+        <a class="payment-button" href="Kefra - Zukuka.mp3" download>
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+      <div class="track hidden-song" style="display:none;">
+        <h3>OBUDDE</h3>
+        <audio controls>
+          <source src="OBUDDE - Kefra.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+        <a class="payment-button" href="OBUDDE - Kefra.mp3" download>
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+      <div class="track hidden-song" style="display:none;">
+        <h3>Wanjagalako ki?</h3>
+        <audio controls>
+          <source src="Kefra - Wanjagalako Ki.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+        <a class="payment-button" href="Kefra - Wanjagalako Ki.mp3" download>
+          <i class="fas fa-download"></i> Download
+        </a>
+      </div>
+    </div>
+    <button class="toggle-button" id="show-more-songs">Show More Songs</button>
+  </div>
+</section>
+
+<!-- Download Software Section (New) with icon and details -->
+<section class="software-section">
+  <h2>Download My Software</h2>
+  <div class="software-details">
+    <img src="beer.png" alt="Software Icon" class="software-icon" />
+    <p><strong>Awesome Software v1.0</strong></p>
+    <p>Experience the best features for music management and more. Compatible with Windows and Mac.</p>
+    <a href="FORGE.zip" class="download-btn" download>
+      <i class="fas fa-download"></i> Download Software
+    </a>
+  </div>
+</section>
+
+<!-- News Blog -->
+<section class="section-container" id="news-blog" style="padding: 20px;">
+  <h2 class="section-title">News Blog</h2>
+  <div class="news-blog" style="display: flex; align-items: center; gap: 20px;">
+    <img src="lights.jpg" width="300" height="200" alt="Description" style="flex-shrink: 0;">
+    <div class="text-content" style="max-width: 600px;">
+      <h3>Latest News</h3>
+      <p>Stay tuned for updates about Kefra Music, new releases, concerts, and more!
+        And from this very blog section you will in the near future be able to see the download links for free music for those who read my blogs only.
+      </p>
+      <h3>Scripture of the day</h3>
+      <p>Give praise to the Lord, proclaim his name; make known among the nations what he has done. Psalms 105:1 NIV</p>
+    </div>
+  </div>
+</section>
+
+<!-- Upcoming Events -->
+<section class="section-container" id="upcoming-events">
+  <h2 class="section-title">Upcoming Events</h2>
+  <div class="upcoming-events">
+    <h3>Next Concerts & Workshops</h3>
+    <ul>
+      <li>Live concert at City Hall - July 15, 2025</li>
+      <li>Music production workshop - August 10, 2025</li>
+      <li>Festival performance - September 5, 2025</li>
+    </ul>
+  </div>
+</section>
+<hr />
+
+<!-- Bookings & Contact -->
+<section id="contact">
+  <div class="section-container">
+    <h2 class="section-title">Bookings & Contact</h2>
+    <div class="contact-section">
+      <!-- Bookings info -->
+      <div class="bookings-info">
+        <h3>Bookings</h3>
+        <p><strong>Phone:</strong> +256 780 194301</p>
+        <p><strong>Address:</strong> zion Avenue, Kampala, Uganda</p>
+        <p><strong>Email:</strong> bogtag9@gmail.com</p>
+        <p>Contact us to book Kefra for concerts, weddings, workshops, and more!</p>
+      </div>
+      <!-- Contact form -->
+      <div class="contact-form-container">
+        <h3>Send a Message</h3>
+        <form id="my-form" action="https://formspree.io/f/xovvpzby" method="POST" class="contact-form">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required rows="6"></textarea>
+
+          <button type="submit">Submit</button>
+          <span id="my-form-status"></span>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 Kefra Music. All rights reserved.</p>
+</footer>
+
+<!-- Scripts -->
+<script>
+  // Toggle show more images
+  document.getElementById('toggle-button').addEventListener('click', function () {
+    const moreImages = document.querySelector('.more-images');
+    if (moreImages.style.display === 'block') {
+      moreImages.style.display = 'none';
+      this.textContent = 'Show More';
+    } else {
+      moreImages.style.display = 'block';
+      this.textContent = 'Show Less';
+    }
+  });
+
+  // Show more songs toggle
+  document.getElementById('show-more-songs').addEventListener('click', function() {
+    const hiddenSongs = document.querySelectorAll('.hidden-song');
+    let isHidden = false;
+    hiddenSongs.forEach(function(song) {
+      if (song.style.display === 'none' || song.style.display === '') {
+        song.style.display = 'flex';
+        isHidden = true;
+      } else {
+        song.style.display = 'none';
+      }
+    });
+    this.textContent = isHidden ? 'Show Less Songs' : 'Show More Songs';
+  });
+  // Initialize hidden songs
+  document.querySelectorAll('.hidden-song').forEach(function(song) {
+    song.style.display = 'none';
+  });
+
+  // Payment processing placeholder (needs backend)
+  async function processPayment(trackName, amount) {
+    const email = "user@example.com"; // Replace or get dynamically
+    const phoneNumber = prompt("Please enter your phone number:");
+    if (!phoneNumber) {
+      alert("Payment cancelled.");
+      return;
+    }
+    const paymentData = {
+      trackName: trackName,
+      amount: amount,
+      phone: phoneNumber,
+      email: email
+    };
+    try {
+      const response = await fetch('/create-momo-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(paymentData)
+      });
+      const result = await response.json();
+      if (response.ok && result.paymentUrl) {
+        window.location.href = result.paymentUrl;
+      } else {
+        alert('Error: ' + (result.message || 'Unable to process payment.'));
+      }
+    } catch (err) {
+      alert('Network error, please try again.');
+    }
+  }
+
+  // Handle contact form submission
+  document.getElementById("my-form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    const status = document.getElementById("my-form-status");
+    const formData = new FormData(this);
+    fetch(this.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        status.innerHTML = "Thanks for your message!";
+        this.reset();
+      } else {
+        response.json().then(data => {
+          status.innerHTML = data.errors ? data.errors.map(e => e.message).join(', ') : 'Error submitting form.';
+        });
+      }
+    }).catch(() => {
+      status.innerHTML = "Network error, please try again.";
+    });
+  });
+</script>
+</body>
+</html>
