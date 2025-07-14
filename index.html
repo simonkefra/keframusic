@@ -21,13 +21,14 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
   }
 
   hr {
     border: none;
-    height: 4px;
-    background-color: #f8f4f4;
-    width: 95%;
+    height: 5px;
+    background-color: #888787;
+    width: 90%;
     margin: 30px auto;
   }
 
@@ -54,7 +55,7 @@
   }
 
   nav ul li a {
-    color: #fff;
+    color: #888787;
     text-decoration: none;
     font-weight: 600;
   }
@@ -309,8 +310,8 @@
   }
 
   .software-icon {
-    width: 100px;
-    height: 100px;
+    width: 400px;
+    height: 400px;
     object-fit: contain;
   }
 
@@ -330,6 +331,29 @@
 
   .download-btn:hover {
     background-color: #3e8e41;
+  }
+
+  /* Style for Back to Top button */
+  #backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 12px 16px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: background-color 0.3s;
+  }
+  #backToTop:hover {
+    background-color: #444;
   }
 </style>
 </head>
@@ -380,7 +404,7 @@
         <img src="maze.JPG" alt="Gallery Image 5" />
         <img src="squad2.JPG" alt="Gallery Image 9" />
         <img src="squad.JPG" alt="Gallery Image 7" />
-        <img src="david.jpg" alt="Gallery Image 8" />
+        <img src="candles.PNG" alt="Gallery Image 8" />
       </div>
     </div>
     <button class="toggle-button" id="toggle-button">Show More</button>
@@ -391,7 +415,7 @@
 <section id="music-library" class="music-library">
   <div class="section-container">
     <h2 class="section-title">Library</h2>
-        <div class="tracks" id="songs-container">
+       <div class="tracks" id="songs-container">
       <!-- Song 1 -->
       <div class="track">
         <h3>Nkomawo</h3>
@@ -463,12 +487,13 @@
 
 <!-- Download Software Section (New) with icon and details -->
 <section class="software-section">
-  <h2>Download My Software</h2>
+  <h1>FORGE MEDIA PLAYER</h1>
   <div class="software-details">
-    <img src="beer.png" alt="Software Icon" class="software-icon" />
-    <p><strong>Awesome Software v1.0</strong></p>
-    <p>Experience the best features for music management and more. Compatible with Windows and Mac.</p>
-    <a href="FORGE.zip" class="download-btn" download>
+    <img src="poem.png" alt="Software Icon" class="software-icon" />
+    <p><strong>forge v1.0</strong></p>
+    <p>Experience the best features for music management and more. Compatible with Windows and Linux.</p>
+    <!-- Updated download link to MediaFire -->
+    <a href="https://www.mediafire.com/file/wbyh6s2c1thetrg/Forge.zip/file" class="download-btn" download>
       <i class="fas fa-download"></i> Download Software
     </a>
   </div>
@@ -539,6 +564,11 @@
 <footer>
   <p>© 2025 Kefra Music. All rights reserved.</p>
 </footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" aria-label="Back to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
 
 <!-- Scripts -->
 <script>
@@ -626,6 +656,26 @@
       status.innerHTML = "Network error, please try again.";
     });
   });
+
+  // Back to Top button functionality
+  const backToTopBtn = document.getElementById('backToTop');
+
+  // Show button after scrolling down 300px
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopBtn.style.display = 'flex';
+    } else {
+      backToTopBtn.style.display = 'none';
+    }
+  });
+
+  // Scroll to top on click
+  document.getElementById('backToTop').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Hide the button initially
+  document.getElementById('backToTop').style.display = 'none';
 </script>
 </body>
 </html>
